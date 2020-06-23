@@ -14,7 +14,6 @@ public class ComparisonEngine {
             }
         }
 
-        if (numberMatchCount == 0) return "0A0B";
-        return "4A0B";
+        return "0A" + numberMatchCount + "B";
     }
 }
