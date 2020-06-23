@@ -28,4 +28,13 @@ class RandomGeneratorTest {
 
         assertThat(resultList).isEqualTo(expected);
     }
+
+    @Test
+    void should_return_different_random_list_when_generate_two_random_list_given_each_list_size_is_4() {
+        RandomGenerator randomGenerator = new RandomGenerator();
+        RandomNumber result_1 = randomGenerator.generate();
+        RandomNumber result_2 = randomGenerator.generate();
+
+        assertThat(result_1.getRandoms()).isNotEqualTo(result_2.getRandoms());
+    }
 }
