@@ -1,7 +1,3 @@
-# TDD实战@保龄球
-![Build](https://github.com/xpbootcamp/tdd-bowling/workflows/Build/badge.svg)
-
-
 ## 开发环境
  - JDK1.8+
  - JUnit 5
@@ -9,16 +5,18 @@
 
 
 ## 用户故事
-请你设计一个计算保龄球比赛一局总得分的程序，保龄球的计分规则如下：
+实现猜数字的游戏。游戏有四个格子，每个格子有一个0到9的数字，任意两个格子的数字都不一样。你有6次猜测的机会，如果猜对则获胜，否则失败。每次猜测时需依序输入4个数字，程序会根据猜测的情况给出xAxB的反馈，A前面的数字代表位置和数字都对的个数，B前面的数字代表数字对但是位置不对的个数。
 
-- 每一局总共有十轮，每轮一开始会有十支球瓶，球手可以扔两次球，目标就是用尽量少的球把全部球瓶击倒。
-- 如果第一球就把全部的球瓶都击倒了，也就是STRIKE，画面出现“X”，就算完成一轮了，所得分数是10分再加后面两球的倒瓶数，
-- 如果第一球没有全倒，就要再打一球，如果第二球将剩下的球瓶全都击倒，也就是SPARE，画面出现“/”，也算完成一格，所得分数为10分再加下一格第一球的倒瓶数，
-- 如果第二球也没有把球瓶全部击倒的话，那分数就是第一球加第二球倒的瓶数，没有奖励（bonus），再接着打下一格。依此类推。
-- 第十轮有机会扔三次球。如果在第十轮出现STRIKE或者SPARE，则球手可再加打第三球。
-- 全部十轮的得分相加就等于这一局的总得分。
+例如：答案是1 2 3 4， 那么对于不同的输入，有如下的输出
 
+Input      Output             Instruction
 
-## 参考资料
-- [JUnit 5用户指南](https://sjyuan.cc/junit5/user-guide-cn/)
-- [Gradle 用户指南](https://docs.gradle.org/current/userguide/userguide.html)
+1 5 6 7        1A0B                 1 correct
+2 4 7 8        0A2B                 2 and 4 wrong position
+0 3 2 4        1A2B                 4 correct，2 and 3 wrong position
+5 6 7 8        0A0B                 all wrong
+4 3 2 1        0A4B                 4 numbers position wrong
+1 2 3 4        4A0B                 win, all correct
+1 1 2 3      Wrong Input，Input again
+1 2            Wrong Input，Input again
+答案在游戏开始时随机生成。输入只有6次机会，在每次猜测时，程序应给出当前猜测的结果，以及之前所有猜测的数字和结果以供玩家参考。
