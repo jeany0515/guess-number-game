@@ -34,4 +34,13 @@ public class ComparisionEngineTest {
 
         assertThat(result).isEqualTo("0A1B");
     }
+
+    @Test
+    void should_return_1A1B_when_comparison_engine_compare_given_guess_numbers_1456_with_randoms_1234() {
+        int[] guessNumber = {1, 4, 5, 6};
+
+        String result = comparisonEngine.compare(guessNumber, randomNumber);
+
+        assertThat(result).isEqualTo("1A1B");
+    }
 }
