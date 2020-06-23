@@ -9,12 +9,29 @@ public class RandomGenerator {
 
         int size = randomNumber.getSize();
         int[] randomList = new int[size];
-        for (int randomIndex = 0; randomIndex < size; randomIndex++) {
-            randomList[randomIndex] = secureRandom.nextInt(10);
+        for (int index = 0; index < size; index++) {
+            randomList[index] = generateAndValidate(secureRandom, randomList, index);
         }
 
         randomNumber.setRandoms(randomList);
 
+        return randomNumber;
+    }
+
+    private int generateAndValidate(SecureRandom secureRandom, int[] randomList, int size) {
+        boolean isRepeat = false;
+        int randomNumber = secureRandom.nextInt(10);
+
+        for (int index = 0; index < size; index++) {
+            if (randomNumber == randomList[index]) {
+                isRepeat = true;
+                break;
+            }
+        }
+
+        if (isRepeat) {
+            randomNumber = generateAndValidate(secureRandom, randomList, size);
+        }
         return randomNumber;
     }
 }
