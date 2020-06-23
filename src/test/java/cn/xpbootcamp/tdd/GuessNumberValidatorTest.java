@@ -30,4 +30,22 @@ public class GuessNumberValidatorTest {
 
         assertThat(result).isEqualTo(false);
     }
+
+    @Test
+    void should_return_wrong_input_when_verify_guess_number_given_1223() {
+        int[] guessNumber = {1, 2, 2, 4};
+
+        boolean result = guessNumberValidator.verify(guessNumber);
+
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void should_return_true_when_verify_guess_number_given_1234() {
+        int[] guessNumber = {1, 2, 3, 4};
+
+        boolean result = guessNumberValidator.verify(guessNumber);
+
+        assertThat(result).isEqualTo(true);
+    }
 }
